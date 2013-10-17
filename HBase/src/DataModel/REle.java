@@ -2,14 +2,12 @@ package DataModel;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.hadoop.hbase.util.Bytes;
 
 import javax.xml.namespace.QName;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by oleglevy on 10/16/13.
- */
 public class REle {
 
     public static final QName TAG_NAME = new QName("r_ele");
@@ -29,9 +27,13 @@ public class REle {
         //current r_ele has reading for a given keb if re_restr does not exist at all
         //or it contains the keb
 
-        if (getReRestrList().isEmpty())
-            return true;
+        return getReRestrList().isEmpty() || getReRestrList().contains(k_ele.getKeb());
 
-        return getReRestrList().contains(k_ele.getKeb());
     }
+
+    public byte[] toBytes()
+    {
+        return Bytes.toBytes(reb);
+    }
+
 }

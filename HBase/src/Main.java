@@ -1,17 +1,13 @@
+import DB.DbFactory;
+import DB.IBuilder;
 import DataModel.Entry;
 import Parser.IJMDictParser;
 import Parser.IParserEvents;
 import Parser.JmDictParserFactory;
 import org.apache.commons.cli.*;
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.hbase.HBaseConfiguration;
-import org.apache.hadoop.hbase.client.HTable;
-import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.client.RetriesExhaustedWithDetailsException;
-import org.apache.hadoop.hbase.util.Bytes;
 
 import javax.xml.stream.XMLStreamException;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InterruptedIOException;
 
@@ -26,17 +22,28 @@ public class Main {
         return parser.parse(commandLineOptions, argv);
     }
 
-    public static void main(String argv[]) throws FileNotFoundException, XMLStreamException, ParseException {
+    public static void main(String argv[]) throws IOException, XMLStreamException, ParseException {
         CommandLine commandLine = checkCommandLine(argv);
 
 //        String filename = "/Users/oleglevy/PycharmProjects/hbasing/jm-tiny.xml";
 
 
-        IJMDictParser parser = JmDictParserFactory.createJmDictParser(commandLine.getOptionValue(JMDICT_LOCATION_CMD_OPTION));
+        final IJMDictParser parser = JmDictParserFactory.createJmDictParser(commandLine.getOptionValue(JMDICT_LOCATION_CMD_OPTION));
+        final IBuilder hbaseBuilder = DbFactory.createHBaseBuilder("jmdict");
+
+
         parser.Start(new IParserEvents() {
             @Override
             public void EntryParsed(Entry e) {
-                System.out.println("Parsed something...");
+                try
+                {
+                    hbaseBuilder.Add(e);
+                }
+                catch (RetriesExhaustedWithDetailsException e1) {
+                    e1.printStackTrace();
+                } catch (InterruptedIOException e1) {
+                    e1.printStackTrace();
+                }
             }
 
             @Override

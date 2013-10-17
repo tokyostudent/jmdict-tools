@@ -2,7 +2,7 @@ package DataModel;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.val;
+import org.apache.hadoop.hbase.util.Bytes;
 
 import javax.xml.namespace.QName;
 import java.util.ArrayList;
@@ -35,6 +35,17 @@ public class Entry {
         return retList;
     }
 
+    public List<KEle> getKebs(REle r_ele)
+    {
+        List<KEle> retList = new LinkedList<KEle>();
+
+        for (KEle k_ele: getKEleList())
+            if (r_ele.isReadingFor(k_ele))
+                retList.add(k_ele);
+
+        return retList;
+    }
+
     public List<Sense> getSenses(KEle k_ele, REle r_ele)
     {
         List<Sense> retSenses = new LinkedList<Sense>();
@@ -44,6 +55,18 @@ public class Entry {
                 retSenses.add(s);
 
         return retSenses;
+    }
+
+    public byte[] getSensesBytes(KEle k_ele, REle r_ele)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<l>");
+
+        for (Sense s: getSenses(k_ele, r_ele))
+            sb.append(s.toString());
+
+        sb.append("</l>");
+        return Bytes.toBytes(sb.toString());
     }
 
 }

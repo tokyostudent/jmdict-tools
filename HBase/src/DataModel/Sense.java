@@ -8,7 +8,6 @@ import java.util.List;
 
 public class Sense {
     public final static QName TAG_NAME = new QName("sense");
-    public final static QName GLOSS_TAG_NAME = new QName("gloss");
     public final static QName STAGK_TAG_NAME = new QName("stagk");
     public final static QName STAGR_TAG_NAME = new QName("stagr");
 
@@ -26,10 +25,8 @@ public class Sense {
         //if the sense does not have a stagk or stagr it's a sense for everything
         //otherwise k_ele must be in stagk
 
-        if (getStagkList().isEmpty())
-            return true;
+        return getStagkList().isEmpty() || getStagkList().contains(k_ele.getKeb());
 
-        return getStagkList().contains(k_ele.getKeb());
     }
 
     public Boolean isSenseFor(REle r_ele)
@@ -37,10 +34,26 @@ public class Sense {
         //if the sense does not have a stagk or stagr it's a sense for everything
         //otherwise k_ele must be in stagk
 
-        if (getStagkList().isEmpty())
-            return true;
+        return getStagkList().isEmpty() || getStagkList().contains(r_ele.getReb());
 
-        return getStagkList().contains(r_ele.getReb());
+    }
+
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append("<s>");
+        for (Gloss g: getGlossList())
+        {
+            sb.append("<g l=\"");
+            sb.append(g.getLang());
+            sb.append("\">");
+            sb.append(g.getGloss());
+            sb.append("</g>");
+        }
+
+        sb.append("</s>");
+
+        return sb.toString();
     }
 
 

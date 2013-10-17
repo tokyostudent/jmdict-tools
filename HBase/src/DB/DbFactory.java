@@ -1,11 +1,9 @@
 package DB;
 
-/**
- * Created by oleglevy on 10/16/13.
- */
+import java.io.IOException;
+
 public class DbFactory {
-    public static IBuilder createHBaseBuilder(String tableName)
-    {
+    public static IBuilder createHBaseBuilder(String tableName) throws IOException {
         return new HBaseBuilderImpl(tableName);
     }
 }
