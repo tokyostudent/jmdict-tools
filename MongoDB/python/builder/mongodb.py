@@ -15,7 +15,7 @@ def BuildDatabase(jmDictXml, connectionString=None):
     def normalizeLists(path, key, value):
         normalizeLists.needEnlisting = {
                          "entry" : ["sense", "k_ele", "r_ele"],
-                         "sense" : ["xref"],
+                         "sense" : ["xref", "stagk", "stagr"],
                          "r_ele": ["re_restr"]
                          }
 
