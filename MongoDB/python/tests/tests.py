@@ -199,9 +199,6 @@ class TestLookup(unittest.TestCase):
 
     def test7_0(self):
         self.lookupRes = self.JM_DICT.lookup("Ç≈Ç¡ÇœÇ»")
-        #this reb is not restricted, therefore it matches èoï@, èoí[, èoÇ¡í[, èoÇ¡ï@
-        #however one of the senses is restricted to èoï@ so for èoï@ two senses
-        #will be returned, however for rest only one sense will be returned
 
         r1 = LookupResult(SenseGroup(   [
                                             Sense(self.SENSE(0, 0)),
@@ -241,3 +238,15 @@ class TestLookup(unittest.TestCase):
         
         self.TESTED_LOOKUP_RESULTS = {r1, r2}
 
+
+    def test8_0(self):
+        self.lookupRes = self.JM_DICT.lookup("çgót")
+
+        r1 = LookupResult(SenseGroup(   [
+                                            Sense(self.SENSE(0, 0)),
+                                            Sense(self.SENSE(0, 1))
+                                        ]))
+
+
+    
+        pass

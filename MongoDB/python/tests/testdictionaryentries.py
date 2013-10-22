@@ -455,4 +455,161 @@ _test7 = [{
     ]
 }]
 
-results = {"test1": _test1, "test2": _test2, "test3": _test3, "test4": _test4, "test5": _test5, "test6": _test6, "test7": _test7}
+_test8 = [{
+    "_id" : ObjectId("5265eccb06cb171d605e3df4"),
+    "ent_seq" : "1578780",
+    "k_ele" : [ 
+        {
+            "keb" : "çgót",
+            "ke_pri" : [ 
+                "ichi1", 
+                "news1", 
+                "nf16"
+            ]
+        }, 
+        {
+            "keb" : "â©ót"
+        }
+    ],
+    "r_ele" : [ 
+        {
+            "reb" : "Ç±Ç§ÇÊÇ§",
+            "re_pri" : [ 
+                "ichi1", 
+                "news1", 
+                "nf16"
+            ]
+        }, 
+        {
+            "reb" : "Ç‡Ç›Ç∂",
+            "re_pri" : "ichi1"
+        }
+    ],
+    "sense" : [ 
+        {
+            "pos" : [ 
+                "noun (common) (futsuumeishi)", 
+                "noun or participle which takes the aux. verb suru"
+            ],
+            "gloss" : [ 
+                {
+                    "@xml:lang" : "eng",
+                    "#text" : "autumn colours"
+                }, 
+                {
+                    "@xml:lang" : "eng",
+                    "#text" : "fall colors"
+                }, 
+                {
+                    "@xml:lang" : "eng",
+                    "#text" : "leaves changing color (colour)"
+                }, 
+                {
+                    "@xml:lang" : "fre",
+                    "#text" : "?rable"
+                }, 
+                {
+                    "@xml:lang" : "fre",
+                    "#text" : "couleurs d'automne"
+                }
+            ]
+        }, 
+        {
+            "stagk" : [ 
+                "çgót"
+            ],
+            "stagr" : [ 
+                "Ç±Ç§ÇÊÇ§"
+            ],
+            "gloss" : [ 
+                {
+                    "@xml:lang" : "eng",
+                    "#text" : "leaves turning red"
+                }, 
+                {
+                    "@xml:lang" : "eng",
+                    "#text" : "red leaves"
+                }
+            ]
+        }, 
+        {
+            "stagk" : [ 
+                "â©ót"
+            ],
+            "stagr" : [ 
+                "Ç±Ç§ÇÊÇ§"
+            ],
+            "gloss" : [ 
+                {
+                    "@xml:lang" : "eng",
+                    "#text" : "leaves turning yellow"
+                }, 
+                {
+                    "@xml:lang" : "eng",
+                    "#text" : "yellow leaves"
+                }
+            ]
+        }, 
+        {
+            "stagr" : [ 
+                "Ç‡Ç›Ç∂"
+            ],
+            "pos" : "noun (common) (futsuumeishi)",
+            "xref" : [ 
+                "à»òCîgçgót"
+            ],
+            "gloss" : {
+                "@xml:lang" : "eng",
+                "#text" : "(Japanese) maple (Acer japonicum)"
+            }
+        }, 
+        {
+            "stagr" : [ 
+                "Ç‡Ç›Ç∂"
+            ],
+            "misc" : "colloquialism",
+            "gloss" : [ 
+                {
+                    "@xml:lang" : "eng",
+                    "#text" : "venison"
+                }, 
+                {
+                    "@xml:lang" : "dut",
+                    "#text" : "najaarskleuring"
+                }, 
+                {
+                    "@xml:lang" : "dut",
+                    "#text" : "bontgekleurde herfstbladeren"
+                }, 
+                {
+                    "@xml:lang" : "dut",
+                    "#text" : "herfstkleurige bladeren"
+                }, 
+                {
+                    "@xml:lang" : "dut",
+                    "#text" : "herfstloof"
+                }, 
+                {
+                    "@xml:lang" : "dut",
+                    "#text" : "rode bladeren"
+                }, 
+                {
+                    "@xml:lang" : "dut",
+                    "#text" : "gele bladeren"
+                }, 
+                {
+                    "@xml:lang" : "ger",
+                    "#text" : "(n) rote Bl?tter"
+                }, 
+                {
+                    "@xml:lang" : "ger",
+                    "#text" : "buntes Herbstlaub"
+                }
+            ]
+        }
+    ]
+}]
+
+results = {"test1": _test1, "test2": _test2, "test3": _test3, "test4": _test4,
+           "test5": _test5, "test6": _test6, "test7": _test7, "test8": _test8
+           }
