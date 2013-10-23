@@ -4,7 +4,8 @@ import DataModel.Entry;
 import DataModel.KEle;
 import DataModel.REle;
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.hbase.*;
+import org.apache.hadoop.hbase.client.HBaseAdmin;
 import org.apache.hadoop.hbase.client.HTable;
 import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.client.RetriesExhaustedWithDetailsException;
@@ -21,11 +22,36 @@ public class HBaseBuilderImpl implements IBuilder {
 
 
     private final HTable _table;
+    private final Configuration _config;
+    private final String _tableName;
 
-    HBaseBuilderImpl(String tableName) throws IOException {
-        Configuration config = HBaseConfiguration.create();
+    HBaseBuilderImpl(String tableName, Boolean recreateTables) throws IOException {
+        _config = HBaseConfiguration.create();
+        _tableName = tableName;
 
-        _table = new HTable(config, tableName);
+        if (recreateTables)
+            prepareTables();
+
+        _table = new HTable(_config, _tableName);
+    }
+
+    private void prepareTables() throws IOException {
+        HBaseAdmin admin = new HBaseAdmin(_config);
+
+        try
+        {
+            //assume that the new table name is the same as old
+            admin.deleteTable(_tableName);
+        }
+        catch (TableNotFoundException tableNotFoundException){}
+
+
+        HTableDescriptor descriptor = new HTableDescriptor(TableName.valueOf(_tableName));
+
+        descriptor.addFamily(new HColumnDescriptor(REBS_FAMILY));
+        descriptor.addFamily(new HColumnDescriptor(KEBS_FAMILY));
+
+        admin.createTable(descriptor);
     }
 
     @Override
