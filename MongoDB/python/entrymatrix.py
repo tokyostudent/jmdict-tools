@@ -1,5 +1,86 @@
 # -*- coding: utf-8 -*-
-from typelessmatrix import AppendableMatrix
+from appendablematrix import AppendableMatrix
+from itertools import chain
+from collections import defaultdict
+
+_test7 = {
+    "ent_seq" : "1391700",
+    "k_ele" : [ 
+        {
+            "keb" : "旋風",
+            "ke_pri" : [ 
+                "news1", 
+                "nf14"
+            ]
+        }, 
+        {
+            "keb" : "辻風"
+        }, 
+        {
+            "keb" : "つむじ風"
+        }, 
+        {
+            "keb" : "つじ風"
+        }
+    ],
+    "r_ele" : [ 
+        {
+            "reb" : "せんぷう",
+            "re_restr" : [ 
+                "旋風"
+            ],
+            "re_pri" : [ 
+                "news1", 
+                "nf14"
+            ]
+        }, 
+        {
+            "reb" : "つむじかぜ",
+            "re_restr" : [ 
+                "旋風", 
+                "つむじ風"
+            ]
+        }, 
+        {
+            "reb" : "つじかぜ",
+            "re_restr" : [ 
+                "旋風", 
+                "辻風", 
+                "つじ風"
+            ]
+        }
+    ],
+    "sense" : [ 
+        {
+            "pos" : "noun (common) (futsuumeishi)",
+            "gloss" : [ 
+                {
+                    "@xml:lang" : "eng",
+                    "#text" : "whirlwind"
+                }
+            ]
+        }, 
+        {
+            "stagr" : [ 
+                "せんぷう"
+            ],
+            "gloss" : [ 
+                {
+                    "@xml:lang" : "eng",
+                    "#text" : "commotion"
+                }, 
+                {
+                    "@xml:lang" : "eng",
+                    "#text" : "sensation"
+                }, 
+                {
+                    "@xml:lang" : "eng",
+                    "#text" : "hullabaloo"
+                }
+            ]
+        }
+    ]
+}
 
 _test8 = {
     "ent_seq" : "1583140",
@@ -104,14 +185,15 @@ class cache(object):
         return result
 
 class RawElem:
+    maxLength = 20
     def __init__(self, rawElem):
         self._raw = rawElem
 
     def __str__(self):
-        return str(self.raw)[:20]
+        return str(self.raw)[:RawElem.maxLength]
     
     def __len__(self):
-        return min(len(self.__str__()), 20)
+        return min(len(self.__str__()), RawElem.maxLength)
 
     def __hash__(self):
         return str(self._raw).__hash__()
@@ -136,7 +218,10 @@ class K_ele(RawElem):
         return "K:" + self.keb
     
     def __eq__(self, other):
-        return self.keb == other.keb
+        if isinstance(other, K_ele):
+            return self.keb == other.keb
+
+        return NotImplemented
 
     __hash__ = RawElem.__hash__
     
@@ -168,7 +253,11 @@ class R_ele(RawElem):
         return "R:" + self.reb
 
     def __eq__(self, other):
-        return self.reb == other.reb
+        print("eq: " + str(self) + " to " + str(other))
+        if isinstance(other, R_ele):
+            return self.reb == other.reb
+
+        return NotImplemented
 
     __hash__ = RawElem.__hash__
 
@@ -221,38 +310,92 @@ class Sense(RawElem):
     def s_inf(self):
         return self._raw["s_inf"]
 
+    '''
+    Check restrictions for sense given a keb and reb
+    '''
     def isSenseFor(self, k_ele, r_ele):
+        #If there are no restrictions on kebs or rebs this sense matches all kebs and rebs
         if not self.stagk and not self.stagr: return True
+        
+        #If there are no restrictions on rebs, but there are restrictions on kebs and given keb is one of them
+        #this sense matches
         if not self.stagr and k_ele.keb in self.stagk: return True
-        if not self.stagk and k_ele.reb in self.stagr: return True
+        
+        #If there are no restrictions on kebs, but there are restrictions on rebs and given reb is one of them
+        #this sense matches
+        if not self.stagk and r_ele.reb in self.stagr: return True
+        
+        #If there are restrictions on both keb and reb and they both match the sense matches
         if self.stagk and k_ele.keb in self.stagk and self.stagr and r_ele.reb in self.stagr: return True
 
+        #In all other cases the sense doesn't match
         return False
 
 
 
 class EntryMatrix:
     def __init__(self, entry):
-        kEleList = [K_ele(k) for k in entry["k_ele"]]
-        rEleList = [R_ele(r) for r in entry["r_ele"]]
-        senseList = [Sense(s) for s in entry["sense"]]
+        self.kEleList = [K_ele(k) for k in entry["k_ele"]]
+        self.rEleList = [R_ele(r) for r in entry["r_ele"]]
+        self.senseList = [Sense(s) for s in entry["sense"]]
 
-        self.matrix = AppendableMatrix(list)
-        for r in rEleList:
-            for k in kEleList:
-                for sense in senseList:
+        self.matrix = AppendableMatrix(R_ele, K_ele, list)
+        #starting looping from sense makes sure that the order of senses in the
+        #list is the same
+        for sense in self.senseList:
+            for r in self.rEleList:
+                for k in self.kEleList:
                     if r.isReadingFor(k) and sense.isSenseFor(k, r):
-                        self.matrix.AppendAt((r, k), sense)
+                        self.matrix.AppendAt(r, k, sense)
 
 
 
     def __str__(self):
         return str(self.matrix)
 
+    '''
+    Entry matrix is usually generated as a result of query of both rebs and kebs. The matrix doesn't
+    care about the actual query, it just needs to know that it matched an entry. But to get the actual
+    match it needs to see if the match was on kebs or rebs. For example, 日本 and にほん will return the
+    same entry. However, if the initial query was にほん the matrix needs to check against rebs and not
+    kebs.
+    '''
     def match(self, query):
-        pass
+        matchingKeleList = [k for k in self.kEleList if query(k.keb)]
+        matchingReleList = [r for r in self.rEleList if query(r.reb)]
+
+        #Create a dictionary {ix:sense} of all (both rebs and kebs) that match the query. Some keys could
+        #be duplicates when both keb and reb matches (for example ent_seq = 1391700, when
+        #querying for つじ). Those keys will be filtered out by the dictionary automatically
+        allSenses = {}
+        for rele in matchingReleList:
+            sense = self.matrix.GetAt(rele, K_ele)
+            if sense:
+                allSenses.update(sense)
+
+        for kele in matchingKeleList:
+            sense = self.matrix.GetAt(R_ele, kele)
+            if sense:
+                allSenses.update(sense)
+
+        #At this point we have all senses and their rebs/kebs in allSenses. Each value is
+        #a list of senses and this list is what we want to return. The values are repeated
+        #and we need to combined the rebs/kebs for each value
+        invertedSenses = defaultdict(list)
+        for rebkeb, sense in allSenses.items():
+            invertedSenses[frozenset(sense)].append(rebkeb)
+
+
+        print(allSenses)
+
+
 
 if __name__ == "__main__":
-    mat = EntryMatrix(_test8)
+    rele = R_ele({"reb":"sdflkjslkf"})
+    print(rele == "sfsfsf")
+
+
+    mat = EntryMatrix(_test7)
     stuff2Print = str(mat)
+    mat.match(lambda s: s.startswith("つじ"))
 

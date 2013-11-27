@@ -34,9 +34,10 @@
     <Compile Include="builder\mongodb.py" />
     <Compile Include="entrymatrix.py" />
     <Compile Include="jmdict.py" />
+    <Compile Include="tests\synthetic.py" />
     <Compile Include="tests\testdictionaryentries.py" />
     <Compile Include="tests\tests.py" />
-    <Compile Include="typelessmatrix.py" />
+    <Compile Include="appendablematrix.py" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="{9a7a9026-48c1-4688-9d5d-e5699d47d074}\3.3" />
