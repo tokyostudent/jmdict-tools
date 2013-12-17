@@ -6,7 +6,7 @@
     <ProjectGuid>f5c0aa7d-3ecc-4473-a980-840d1105378a</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>entrymatrix.py</StartupFile>
+    <StartupFile>restful.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -32,8 +32,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="builder\mongodb.py" />
+    <Compile Include="dbaccess.py" />
     <Compile Include="entrymatrix.py" />
     <Compile Include="jmdict.py" />
+    <Compile Include="querymatcher.py" />
+    <Compile Include="restful.py" />
     <Compile Include="tests\synthetic.py" />
     <Compile Include="tests\testdictionaryentries.py" />
     <Compile Include="tests\tests.py" />

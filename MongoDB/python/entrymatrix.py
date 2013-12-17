@@ -1,7 +1,102 @@
 # -*- coding: utf-8 -*-
 from appendablematrix import AppendableMatrix
-from itertools import chain
+from itertools import chain, groupby
 from collections import defaultdict
+
+_test6 = {
+    "ent_seq" : "1183300",
+    "k_ele" : [ 
+        {
+            "keb" : "温い",
+            "ke_pri" : "ichi1"
+        }, 
+        {
+            "keb" : "緩い"
+        }, 
+        {
+            "keb" : "微温い"
+        }
+    ],
+    "r_ele" : [ 
+        {
+            "reb" : "ぬるい",
+            "re_pri" : "ichi1"
+        }, 
+        {
+            "reb" : "ぬくい",
+            "re_restr" : [ 
+                "温い"
+            ]
+        }
+    ],
+    "info" : {
+        "audit" : [ 
+            {
+                "upd_date" : "2010-08-05",
+                "upd_detl" : "Entry created"
+            }, 
+            {
+                "upd_date" : "2010-08-10",
+                "upd_detl" : "Entry amended"
+            }
+        ]
+    },
+    "sense" : [ 
+        {
+            "stagk" : [ 
+                "温い", 
+                "微温い"
+            ],
+            "pos" : "adjective (keiyoushi)",
+            "misc" : "word usually written using kana alone",
+            "s_inf" : "ぬくい is primarily used in Western Japan",
+            "gloss" : [ 
+                {
+                    "@xml:lang" : "eng",
+                    "#text" : "lukewarm"
+                }, 
+                {
+                    "@xml:lang" : "eng",
+                    "#text" : "tepid"
+                }
+            ]
+        }, 
+        {
+            "stagr" : [ 
+                "ぬるい"
+            ],
+            "xref" : [ 
+                "緩い・ゆるい・1"
+            ],
+            "misc" : "word usually written using kana alone",
+            "gloss" : {
+                "@xml:lang" : "eng",
+                "#text" : "lenient"
+            }
+        }, 
+        {
+            "stagr" : [ 
+                "ぬくい"
+            ],
+            "xref" : [ 
+                "温"
+            ],
+            "misc" : [ 
+                "word usually written using kana alone", 
+                "archaism"
+            ],
+            "gloss" : [ 
+                {
+                    "@xml:lang" : "eng",
+                    "#text" : "slow"
+                }, 
+                {
+                    "@xml:lang" : "eng",
+                    "#text" : "stupid"
+                }]
+        }
+    ]
+}
 
 _test7 = {
     "ent_seq" : "1391700",
@@ -188,6 +283,7 @@ class RawElem:
     maxLength = 20
     def __init__(self, rawElem):
         self._raw = rawElem
+        self._hash = str(self._raw).__hash__()
 
     def __str__(self):
         return str(self.raw)[:RawElem.maxLength]
@@ -196,7 +292,7 @@ class RawElem:
         return min(len(self.__str__()), RawElem.maxLength)
 
     def __hash__(self):
-        return str(self._raw).__hash__()
+        return self._hash
 
 class K_ele(RawElem):
     @cache
@@ -205,11 +301,11 @@ class K_ele(RawElem):
 
     @cache
     def ke_inf(self):
-        return self._raw["ke_inf"]
+        return self._raw.get("ke_inf", None)
 
     @cache
     def ke_pri(self):
-        return self._raw["ke_pri"]
+        return self._raw.get("ke_pri", None)
 
     def __str__(self):
         return self.keb
@@ -232,7 +328,7 @@ class R_ele(RawElem):
 
     @cache
     def re_pri(self):
-        return self._raw["re_pri"]
+        return self._raw.get("re_pri", None)
 
     @cache
     def re_restr(self):
@@ -244,7 +340,7 @@ class R_ele(RawElem):
 
     @cache
     def re_inf(self):
-        return self._raw["re_inf"]
+        return self._raw.get("re_inf", None)
 
     def __str__(self):
         return self.reb
@@ -253,7 +349,6 @@ class R_ele(RawElem):
         return "R:" + self.reb
 
     def __eq__(self, other):
-        print("eq: " + str(self) + " to " + str(other))
         if isinstance(other, R_ele):
             return self.reb == other.reb
 
@@ -275,7 +370,8 @@ class Sense(RawElem):
 
     @cache
     def gloss(self):
-        return self._raw["gloss"]
+        tempGloss = self._raw["gloss"]
+        return tempGloss if isinstance(tempGloss, list) else [tempGloss]
     @cache
     def misc(self):
         return self._raw["misc"]
@@ -290,7 +386,7 @@ class Sense(RawElem):
         return self._raw["xref"]
     @cache
     def pos(self):
-        return self._raw["pos"]
+        return self._raw.get("pos", None)
     @cache
     def stagr(self):
         return self._raw.get("stagr", [])
@@ -308,7 +404,7 @@ class Sense(RawElem):
         return self._raw["lsource"]
     @cache
     def s_inf(self):
-        return self._raw["s_inf"]
+        return self._raw.get("s_inf", None)
 
     '''
     Check restrictions for sense given a keb and reb
@@ -330,6 +426,75 @@ class Sense(RawElem):
 
         #In all other cases the sense doesn't match
         return False
+
+    '''
+    Serialize a sense so that it can be used in the REST API
+    '''
+    def getJson(self):
+        groups = []
+        uniquekeys = []
+        keyfunc = lambda g: g["@xml:lang"]
+        byLang = defaultdict(list)
+        
+        for k, g in groupby(sorted(self.gloss, key=keyfunc), keyfunc):
+            byLang[k] = list(map(lambda g: g["#text"], g))
+
+        return {"pos":self.pos, "gloss":byLang, "inf": self.s_inf}
+
+
+class ReadingDef:
+    def __init__(self):
+        self.readingDefs = []
+
+    def addReadingDef(self, readingDef):
+        pass
+
+class RebKebAssociation:
+    def __repr__(self):
+        return str(self.byReb) 
+    
+    def __init__(self, reb, keb):
+        self.byReb = {}
+        self.add(reb, keb)
+
+    def add(self, reb, keb):
+        if reb in self.byReb:
+            self.byReb[reb] = self.byReb[reb] + (keb,)
+        else:
+            self.byReb[reb] = (keb,)
+    
+    def getByReb(self):
+        return self.byReb
+
+    def getJsonByReb(self):
+        retJson = list()
+        for r_ele, k_eles in self.byReb.items():
+            retJson.append({"r": r_ele.reb,
+                            "inf": r_ele.re_inf,
+                            "k": [{k.keb:{"inf": k.ke_inf}} for k in k_eles]})
+        
+        return retJson
+        
+
+
+class QueryResult:
+    def __init__(self):
+        self.senseList = {}
+        self.readings = []
+    
+    def addSense(self, sense, rebkeb):
+        reb, keb = rebkeb
+        frozenSense = frozenset(sense)
+        if frozenSense in self.senseList:
+            self.senseList[frozenSense].add(reb, keb)
+        else:
+            self.senseList[frozenSense] = RebKebAssociation(reb, keb)
+    
+    def bySense(self):
+        return ((sense, rebkeb) for sense, rebkeb  in self.senseList.items())
+
+
+
 
 
 
@@ -361,8 +526,8 @@ class EntryMatrix:
     kebs.
     '''
     def match(self, query):
-        matchingKeleList = [k for k in self.kEleList if query(k.keb)]
-        matchingReleList = [r for r in self.rEleList if query(r.reb)]
+        matchingKeleList = (k for k in self.kEleList if query(k.keb))
+        matchingReleList = (r for r in self.rEleList if query(r.reb))
 
         #Create a dictionary {ix:sense} of all (both rebs and kebs) that match the query. Some keys could
         #be duplicates when both keb and reb matches (for example ent_seq = 1391700, when
@@ -381,21 +546,28 @@ class EntryMatrix:
         #At this point we have all senses and their rebs/kebs in allSenses. Each value is
         #a list of senses and this list is what we want to return. The values are repeated
         #and we need to combined the rebs/kebs for each value
-        invertedSenses = defaultdict(list)
+        queryResult = QueryResult()
         for rebkeb, sense in allSenses.items():
-            invertedSenses[frozenset(sense)].append(rebkeb)
+            queryResult.addSense(sense, rebkeb)
 
 
-        print(allSenses)
+        return queryResult
 
 
 
 if __name__ == "__main__":
-    rele = R_ele({"reb":"sdflkjslkf"})
-    print(rele == "sfsfsf")
+#    mat = EntryMatrix(_test7)
+#    stuff2Print = str(mat)
+#    mat.match(lambda s: s.startswith("つじ"))
 
-
-    mat = EntryMatrix(_test7)
+    mat = EntryMatrix(_test6)
     stuff2Print = str(mat)
-    mat.match(lambda s: s.startswith("つじ"))
+    qr = mat.match(lambda s: s.startswith("温"))
 
+    print("-" * 20)
+    for sense, rebkeb in qr.bySense():
+        print(sense, end="|")
+        print(rebkeb)
+
+
+    print("thank you drive through")
