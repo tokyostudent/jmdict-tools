@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e06faf0-788e-4535-b1cf-5ca1c9d9cf0c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/DbFactory.java" afterPath="$PROJECT_DIR$/src/DB/DbFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HBase.iml" afterPath="$PROJECT_DIR$/HBase.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DB/HBaseBuilderImpl.java" afterPath="$PROJECT_DIR$/src/DB/HBaseBuilderImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HBasing.iws" />
@@ -59,7 +61,7 @@
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/Main.java" line="38" class="Main$1" package="">
+      <breakpoint url="file://$PROJECT_DIR$/src/Main.java" line="50" class="Main$1" package="">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -74,7 +76,37 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/Main.java" line="43" class="Main$1" package="">
+      <breakpoint url="file://$PROJECT_DIR$/src/Main.java" line="42" class="Main$1" package="">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/Main.java" line="44" class="Main$1" package="">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/DB/HBaseBuilderImpl.java" line="48" class="DB.HBaseBuilderImpl" package="DB">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -102,25 +134,7 @@
       <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="2" selection-start="2257" selection-end="2257" vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="1005">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JmDictParser.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Parser/JmDictParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="0" selection-start="3553" selection-end="3553" vertical-scroll-proportion="0.0" vertical-offset="1365" max-vertical-offset="1710">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IBuilder.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DB/IBuilder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="25" selection-start="63" selection-end="63" vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="195">
+            <state line="30" column="0" selection-start="1087" selection-end="1087" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="1170">
               <folding />
             </state>
           </provider>
@@ -129,25 +143,97 @@
       <file leaf-file-name="DbFactory.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DB/DbFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="26" selection-start="178" selection-end="178" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="255">
+            <state line="6" column="29" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HBaseBuilderImpl.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="IBuilder.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DB/IBuilder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="17" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HBaseBuilderImpl.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DB/HBaseBuilderImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="0" selection-start="685" selection-end="685" vertical-scroll-proportion="0.5947136" vertical-offset="0" max-vertical-offset="510">
+            <state line="39" column="0" selection-start="1230" selection-end="1230" vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="1170">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KEle.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DataModel/KEle.java">
+      <file leaf-file-name="table.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$USER_HOME$/hbase/hbase-0.96.0-hadoop2/lib/ruby/hbase/table.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
+            <state line="392" column="66" selection-start="13956" selection-end="13956" vertical-scroll-proportion="0.8013245" vertical-offset="5517" max-vertical-offset="8250">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scan.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/hbase/hbase-0.96.0-hadoop2/lib/ruby/shell/commands/scan.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="98" column="39" selection-start="3824" selection-end="3824" vertical-scroll-proportion="0.0" vertical-offset="1167" max-vertical-offset="1740">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HTableDescriptor.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/hbase/hbase-0.96.0/hbase-client/src/main/java/org/apache/hadoop/hbase/HTableDescriptor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="253" column="46" selection-start="9832" selection-end="9849" vertical-scroll-proportion="-6.6153846" vertical-offset="2828" max-vertical-offset="21930">
+              <folding>
+                <element signature="e#3672#3720#0" expanded="true" />
+                <element signature="e#4028#4044#0" expanded="true" />
+                <element signature="e#8632#8648#0" expanded="true" />
+                <element signature="e#8738#8762#0" expanded="true" />
+                <element signature="e#27536#27560#0" expanded="true" />
+                <element signature="e#27618#27642#0" expanded="true" />
+                <element signature="e#42248#42256#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TableName.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/hbase/hbase-0.96.0/hbase-common/src/main/java/org/apache/hadoop/hbase/TableName.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="53" column="18" selection-start="1972" selection-end="1972" vertical-scroll-proportion="0.0" vertical-offset="3615" max-vertical-offset="4770">
+              <folding>
+                <element signature="n#!!doc" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#7414#7415#0" expanded="false" />
+                <element signature="e#7435#7436#0" expanded="false" />
+                <element signature="e#7472#7473#0" expanded="false" />
+                <element signature="e#7501#7502#0" expanded="false" />
+                <element signature="e#7535#7536#0" expanded="false" />
+                <element signature="e#7561#7562#0" expanded="false" />
+                <element signature="e#7603#7604#0" expanded="false" />
+                <element signature="e#7637#7638#0" expanded="false" />
+                <element signature="e#7671#7672#0" expanded="false" />
+                <element signature="e#7697#7698#0" expanded="false" />
+                <element signature="e#7739#7740#0" expanded="false" />
+                <element signature="e#7773#7774#0" expanded="false" />
+                <element signature="e#7859#7860#0" expanded="false" />
+                <element signature="e#7887#7888#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HTableDescriptor.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/../lib/hbase-client-0.95.2-hadoop2.jar!/org/apache/hadoop/hbase/HTableDescriptor.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="92" column="0" selection-start="5081" selection-end="5081" vertical-scroll-proportion="0.0" vertical-offset="259" max-vertical-offset="4035">
               <folding />
             </state>
           </provider>
@@ -156,35 +242,10 @@
       <file leaf-file-name="Entry.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DataModel/Entry.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="0" selection-start="1052" selection-end="1052" vertical-scroll-proportion="0.0" vertical-offset="63" max-vertical-offset="825">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="REle.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DataModel/REle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="57" selection-start="834" selection-end="834" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="645">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Sense.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DataModel/Sense.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="0" selection-start="873" selection-end="873" vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="825">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IHBaseImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DB/IHBaseImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="36" selection-start="74" selection-end="74" vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="240">
-              <folding />
+            <state line="63" column="0" selection-start="1473" selection-end="1473" vertical-scroll-proportion="0.0" vertical-offset="539" max-vertical-offset="1065">
+              <folding>
+                <element signature="e#887#893#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -208,28 +269,63 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Parser/Importer.java" />
-        <option value="$PROJECT_DIR$/src/Parser/Main.java" />
         <option value="$PROJECT_DIR$/src/JmdictModel/schema.dtd" />
         <option value="$PROJECT_DIR$/src/DataModel/Gloss.java" />
         <option value="$PROJECT_DIR$/src/Parser/IParserEvents.java" />
         <option value="$PROJECT_DIR$/src/Parser/JmDictParser.java" />
         <option value="$PROJECT_DIR$/src/DB/IDbUpdater.java" />
-        <option value="$PROJECT_DIR$/src/DB/DbFactory.java" />
-        <option value="$PROJECT_DIR$/src/DataModel/REle.java" />
         <option value="$PROJECT_DIR$/src/DB/HBaseImpl.java" />
         <option value="$PROJECT_DIR$/src/DB/IHBaseImpl.java" />
+        <option value="$PROJECT_DIR$/src/DataModel/KEle.java" />
+        <option value="$PROJECT_DIR$/src/DataModel/REle.java" />
         <option value="$PROJECT_DIR$/src/DataModel/Sense.java" />
         <option value="$PROJECT_DIR$/src/DataModel/Entry.java" />
-        <option value="$PROJECT_DIR$/src/DataModel/KEle.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$USER_HOME$/hbase/hbase-0.96.0/hbase-client/src/main/java/org/apache/hadoop/hbase/HTableDescriptor.java" />
+        <option value="$PROJECT_DIR$/src/DB/DbFactory.java" />
         <option value="$PROJECT_DIR$/src/DB/HBaseBuilderImpl.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$USER_HOME$/hbase/hbase-0.96.0-hadoop2/lib/ruby/hbase/table.rb" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="width" value="1280" />
     <option name="height" value="800" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Abstraction issues</id>
+          </State>
+          <State>
+            <id>Class metrics</id>
+          </State>
+          <State>
+            <id>Code style issues</id>
+          </State>
+          <State>
+            <id>Declaration redundancy</id>
+          </State>
+          <State>
+            <id>Error handling</id>
+          </State>
+          <State>
+            <id>Method metrics</id>
+          </State>
+          <State>
+            <id>Naming conventions</id>
+          </State>
+          <State>
+            <id>Security issues</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -478,6 +574,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HBasing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HBase" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DataModel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -493,18 +607,18 @@
     <property name="Downloaded.Files.Path" value="$PROJECT_DIR$/lib" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="true" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="options.lastSelected" value="Errors" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="FullScreen" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$USER_HOME$/hbase/hbase-0.96.0-hadoop2/lib/ruby/shell/commands/scan.rb" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
   </component>
@@ -564,7 +678,7 @@
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="HBasing" />
+      <module name="HBase" />
       <envs />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="" />
@@ -600,25 +714,25 @@
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32934928" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934928" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3306773" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32934928" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3306773" sideWeight="0.703125" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3306773" sideWeight="0.296875" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934928" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21953125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.259375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -631,6 +745,9 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="It actually adds some stuff..." />
+    <option name="LAST_COMMIT_MESSAGE" value="It actually adds some stuff..." />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -640,78 +757,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_40.jdk/Contents/Home/src.zip!/javax/xml/stream/events/StartElement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="12" selection-start="2469" selection-end="2469" vertical-scroll-proportion="0.33333334" vertical-offset="839" max-vertical-offset="1395" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Parser/JmDictParserFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="27" selection-start="290" selection-end="290" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="240" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/JmdictModel/schema.dtd">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="201" column="25" selection-start="10947" selection-end="10955" vertical-scroll-proportion="-9.791667" vertical-offset="2780" max-vertical-offset="5625" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Parser/IParserEvents.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="8" selection-start="111" selection-end="115" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataModel/Gloss.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="23" selection-start="421" selection-end="421" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/hbasing/jm-tiny.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="8790" max-vertical-offset="9375" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DB/IBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="25" selection-start="63" selection-end="63" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DB/DbFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="26" selection-start="178" selection-end="178" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Parser/JmDictParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="0" selection-start="3553" selection-end="3553" vertical-scroll-proportion="0.0" vertical-offset="1077" max-vertical-offset="1710">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataModel/REle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="57" selection-start="834" selection-end="834" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataModel/Sense.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="873" selection-end="873" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataModel/Entry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="0" selection-start="1052" selection-end="1052" vertical-scroll-proportion="0.0" vertical-offset="63" max-vertical-offset="825">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DB/IHBaseImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="36" selection-start="74" selection-end="74" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="240">
@@ -721,21 +766,137 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DataModel/KEle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
+        <state line="28" column="0" selection-start="531" selection-end="606" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="435">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataModel/REle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="8" selection-start="718" selection-end="718" vertical-scroll-proportion="0.0" vertical-offset="131" max-vertical-offset="585">
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#527#535#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataModel/Sense.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="8" selection-start="1017" selection-end="1017" vertical-scroll-proportion="0.0" vertical-offset="329" max-vertical-offset="960">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataModel/Entry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="0" selection-start="1473" selection-end="1473" vertical-scroll-proportion="0.0" vertical-offset="539" max-vertical-offset="1065">
+          <folding>
+            <element signature="e#887#893#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../lib/hbase-common-0.95.2-hadoop2.jar!/org/apache/hadoop/hbase/TableName.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="0" selection-start="1391" selection-end="1391" vertical-scroll-proportion="-0.68509614" vertical-offset="660" max-vertical-offset="1125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../lib/hbase-client-0.95.2-hadoop2.jar!/org/apache/hadoop/hbase/HTableDescriptor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="0" selection-start="5081" selection-end="5081" vertical-scroll-proportion="0.0" vertical-offset="259" max-vertical-offset="4035">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/hbase/hbase-0.96.0-hadoop2/lib/hbase-client-0.96.0-hadoop2.jar!/org/apache/hadoop/hbase/HTableDescriptor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="11" selection-start="4608" selection-end="4608" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4020">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/hbase/hbase-0.96.0/hbase-common/src/main/java/org/apache/hadoop/hbase/TableName.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="18" selection-start="1972" selection-end="1972" vertical-scroll-proportion="0.0" vertical-offset="3615" max-vertical-offset="4770">
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#7414#7415#0" expanded="false" />
+            <element signature="e#7435#7436#0" expanded="false" />
+            <element signature="e#7472#7473#0" expanded="false" />
+            <element signature="e#7501#7502#0" expanded="false" />
+            <element signature="e#7535#7536#0" expanded="false" />
+            <element signature="e#7561#7562#0" expanded="false" />
+            <element signature="e#7603#7604#0" expanded="false" />
+            <element signature="e#7637#7638#0" expanded="false" />
+            <element signature="e#7671#7672#0" expanded="false" />
+            <element signature="e#7697#7698#0" expanded="false" />
+            <element signature="e#7739#7740#0" expanded="false" />
+            <element signature="e#7773#7774#0" expanded="false" />
+            <element signature="e#7859#7860#0" expanded="false" />
+            <element signature="e#7887#7888#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/hbase/hbase-0.96.0/hbase-client/src/main/java/org/apache/hadoop/hbase/HTableDescriptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="253" column="46" selection-start="9832" selection-end="9849" vertical-scroll-proportion="-6.6153846" vertical-offset="2828" max-vertical-offset="21930">
+          <folding>
+            <element signature="e#3672#3720#0" expanded="true" />
+            <element signature="e#4028#4044#0" expanded="true" />
+            <element signature="e#8632#8648#0" expanded="true" />
+            <element signature="e#8738#8762#0" expanded="true" />
+            <element signature="e#27536#27560#0" expanded="true" />
+            <element signature="e#27618#27642#0" expanded="true" />
+            <element signature="e#42248#42256#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DB/IBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="17" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DB/DbFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="29" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="2" selection-start="2257" selection-end="2257" vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="1005">
+        <state line="30" column="0" selection-start="1087" selection-end="1087" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="1170">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DB/HBaseBuilderImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="685" selection-end="685" vertical-scroll-proportion="0.5947136" vertical-offset="0" max-vertical-offset="510">
+        <state line="39" column="0" selection-start="1230" selection-end="1230" vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="1170">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/hbase/hbase-0.96.0-hadoop2/lib/ruby/shell/commands/scan.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="98" column="39" selection-start="3824" selection-end="3824" vertical-scroll-proportion="0.0" vertical-offset="1167" max-vertical-offset="1740">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/hbase/hbase-0.96.0-hadoop2/lib/ruby/hbase/table.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="392" column="66" selection-start="13956" selection-end="13956" vertical-scroll-proportion="0.8013245" vertical-offset="5517" max-vertical-offset="8250">
           <folding />
         </state>
       </provider>
@@ -793,7 +954,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>HBasing</last-edited>
+          <last-edited>HBase</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -805,7 +966,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>org.apache.hbase:hbase-server:0.95.2-hadoop2</last-edited>
+          <last-edited>hbase-0.96.0-hadoop2</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

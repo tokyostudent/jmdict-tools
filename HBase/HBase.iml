@@ -7,9 +7,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="org.apache.hbase:hbase-server:0.95.2-hadoop2" level="application" />
     <orderEntry type="library" name="org.codehaus.woodstox:woodstox-core-lgpl:4.2.0" level="application" />
     <orderEntry type="library" name="org.projectlombok:lombok:1.12.2" level="application" />
+    <orderEntry type="library" name="hbase-0.96.0-hadoop2" level="project" />
   </component>
 </module>
 
