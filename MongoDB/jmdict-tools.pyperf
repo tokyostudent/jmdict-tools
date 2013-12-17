@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ProfilingTarget xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectTarget>
+    <TargetProject>f5c0aa7d-3ecc-4473-a980-840d1105378a</TargetProject>
+    <FriendlyName>jmdict-tools</FriendlyName>
+  </ProjectTarget>
+  <Reports>
+    <Report>
+      <Filename>C:\Users\Oleg\AppData\Local\Temp\jmdict-tools_20131215.vsp</Filename>
+    </Report>
+  </Reports>
+</ProfilingTarget>
