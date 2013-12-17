@@ -1,7 +1,7 @@
 # -*- coding: shift-jis -*-
 
 import unittest
-from jmdict import JmDict, KanjiReading, LookupResult, Sense, SenseGroup
+from jmdict import JmDict, KanjiReading, LookupResult, Sense, SenseGroup, EntryMatrix
 
 from unittest.mock import MagicMock, Mock
 import testdictionaryentries
@@ -25,14 +25,30 @@ class TestLookup(unittest.TestCase):
 
         return super().setUp()
 
-    def SENSE(self, resultIndex, senseIndex):
-        return self.TEST_DATA[resultIndex]["sense"][senseIndex]
+    def SENSE(self, senseIndex = -1, resultIndex = 0, **args):
+        if -1 == senseIndex:
+            return self.TEST_DATA[resultIndex]["sense"]
+        else:
+            return self.TEST_DATA[resultIndex]["sense"][senseIndex]
 
-    def K_ELE_KEB(self, resultIndex, kEleIndex):
-        return self.TEST_DATA[resultIndex]["k_ele"][kEleIndex]["keb"]
 
-    def R_ELE_REB(self, resultIndex, rEleIndex):
-        return self.TEST_DATA[resultIndex]["r_ele"][rEleIndex]["reb"]
+    def K_ELE(self, kEleIndex = -1, resultIndex = 0, **args):
+        if -1 == kEleIndex:
+            return self.TEST_DATA[resultIndex]["k_ele"]
+        else:
+            return self.TEST_DATA[resultIndex]["k_ele"][kEleIndex]
+
+    def KEB(self, kEleIndex = 0, **args):
+        return self.K_ELE(kEleIndex, **args)["keb"]
+
+    def R_ELE(self, rEleIndex = -1, resultIndex = 0, **args):
+        if -1 == rEleIndex:
+            return self.TEST_DATA[resultIndex]["r_ele"]
+        else:
+            return self.TEST_DATA[resultIndex]["k_ele"][rEleIndex]
+
+    def REB(self, rEleIndex = 0, **args):
+        return R_ELE(rEleIndex, **args)["reb"]
 
     def tearDown(self):
         self.assertIsNone(deep.diff(self.lookupRes, self.TESTED_LOOKUP_RESULTS, 1))
@@ -250,3 +266,12 @@ class TestLookup(unittest.TestCase):
 
     
         pass
+
+    def test8_1(self):
+        entryMatrix = EntryMatrix(self.K_ELE(), self.R_ELE(), self.SENSE())
+
+        pass
+
+
+
+
