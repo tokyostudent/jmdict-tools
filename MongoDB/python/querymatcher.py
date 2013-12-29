@@ -8,19 +8,29 @@ class QueryOptions(Enum):
     startsWith = 1
     exactMatch = 2
 
+class DetailLevel(Enum):
+    minimal = 1
+    all = 2
+
 class JmDictQuery:
 #{ name : { $regex : '^acme', $options: 'i' } } );    
     def __init__(self, jmDb):
         self.db = jmDb
 
-    def query(self, queryString, queryOptions):
+    def query(self, queryString, queryOptions, detailLevel):
         if queryOptions is QueryOptions.startsWith:
             query = {"$or": [{"k_ele.keb":{"$regex": "^{0}".format(queryString)}}, {"r_ele.reb":{"$regex": "^{0}".format(queryString)}}]}
 
         if queryOptions is QueryOptions.exactMatch:
             query = {"$or": [{"k_ele.keb":queryString}, {"r_ele.reb":queryString}]}
 
-        return self.db.find(query)
+        if detailLevel is DetailLevel.all:
+            fields = None
+        
+        if detailLevel is DetailLevel.minimal:
+            fields = ["k_ele", "r_ele", "sense"]
+
+        return self.db.find(query, fields)
 
 if __name__ == "__main__":
     from dbaccess import JmDictMongoDb

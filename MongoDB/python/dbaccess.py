@@ -1,5 +1,6 @@
 from motor import MotorClient, Op
 import tornado
+from enum import Enum
 from tornado.concurrent import Future
 
 class JmDictMongoDb:

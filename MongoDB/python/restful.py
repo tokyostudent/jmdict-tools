@@ -1,16 +1,17 @@
 import tornado.ioloop
 import tornado.web
 from dbaccess import JmDictMongoDb
-from querymatcher import JmDictQuery, QueryOptions
+from querymatcher import JmDictQuery, QueryOptions, DetailLevel
 from entrymatrix import EntryMatrix
 from json import dumps
 from functools import reduce
+from time import time
 
 class JmDictRestService(tornado.web.Application):
     def __init__(self):
-        handlers =[(r"/v1/entry/(.*)", EntryRequestHandler)]
+        handlers =[(r"/v1/lookup/(.*)", LookupRequestHandler)]
 
-        tornado.web.Application.__init__(self, handlers)
+        tornado.web.Application.__init__(self, handlers, gzip=True)
 
         self.listen(1234)
         self.settings["dictQuery"] = JmDictQuery(JmDictMongoDb())
@@ -22,16 +23,28 @@ class JmDictRestService(tornado.web.Application):
 
 
 
-class EntryRequestHandler(tornado.web.RequestHandler):
+class LookupRequestHandler(tornado.web.RequestHandler):
+    matchTypes = {"exact": QueryOptions.exactMatch, "startsWith": QueryOptions.startsWith}
+    detailLevels = {"minimal": DetailLevel.minimal, "all": DetailLevel.all}
+
     @tornado.gen.coroutine
     @tornado.web.asynchronous
-    def get(self, entry_id):
+    def get(self, lookupItem):
         dictQuery = self.settings["dictQuery"]
-        dbResults = yield dictQuery.query(entry_id, QueryOptions.exactMatch)
 
-        restResult = {"queryRsp":[]}
+        matchType = self.matchTypes.get(self.get_argument("matchOptions", default="exact"))
+        detailLevel = self.detailLevels.get(self.get_argument("detailLevel", default="minimal"))
+        matchFunction = {QueryOptions.exactMatch: lambda s: s == lookupItem,
+                         QueryOptions.startsWith: lambda s: s.startswith(lookupItem)}[matchType]
+        
+        s = time()
+        dbResults = yield dictQuery.query(lookupItem, matchType, detailLevel)
+        s1 = time()
+
+
+        restResult = {"queryRsp":[], "dbTime": s1 - s}
         for m in (EntryMatrix(res) for res in dbResults):
-            qr = m.match(lambda s: s == entry_id)
+            qr = m.match(matchFunction)
             
             for senseSet, rebkeb in qr.bySense():
                 restResult["queryRsp"].append({"sense":list(map(lambda s: s.getJson(), senseSet)), "reading":rebkeb.getJsonByReb()})
