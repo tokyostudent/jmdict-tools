@@ -1,10 +1,10 @@
 import tornado.ioloop
 import tornado.web
 from dbaccess import JmDictMongoDb
-from querymatcher import JmDictQuery, QueryOptions, DetailLevel
 from entrymatrix import EntryMatrix
 from json import dumps
 from functools import reduce
+from querybuilders import LookupQueryBuilder
 from time import time
 
 class JmDictRestService(tornado.web.Application):
@@ -14,7 +14,7 @@ class JmDictRestService(tornado.web.Application):
         tornado.web.Application.__init__(self, handlers, gzip=True)
 
         self.listen(1234)
-        self.settings["dictQuery"] = JmDictQuery(JmDictMongoDb())
+        self.settings["jmDictMongoDb"] = JmDictMongoDb()
 
     
     def run(self):
@@ -24,30 +24,21 @@ class JmDictRestService(tornado.web.Application):
 
 
 class LookupRequestHandler(tornado.web.RequestHandler):
-    matchTypes = {"exact": QueryOptions.exactMatch, "startsWith": QueryOptions.startsWith}
-    detailLevels = {"minimal": DetailLevel.minimal, "all": DetailLevel.all}
-
     @tornado.gen.coroutine
     @tornado.web.asynchronous
     def get(self, lookupItem):
-        dictQuery = self.settings["dictQuery"]
-
-        matchType = self.matchTypes.get(self.get_argument("matchOptions", default="exact"))
-        detailLevel = self.detailLevels.get(self.get_argument("detailLevel", default="minimal"))
-        matchFunction = {QueryOptions.exactMatch: lambda s: s == lookupItem,
-                         QueryOptions.startsWith: lambda s: s.startswith(lookupItem)}[matchType]
+        #Create the bestest query spec from all available REST parameters
+        queryBuilder = LookupQueryBuilder(lookupItem, self.path_kwargs)
         
-        s = time()
-        dbResults = yield dictQuery.query(lookupItem, matchType, detailLevel)
-        s1 = time()
+        #Use the bestest query to get all the entries from the DB
+        dbResults, findStats = yield self.settings["jmDictMongoDb"].find(queryBuilder.spec, limit=queryBuilder.limit)
 
-
-        restResult = {"queryRsp":[], "dbTime": s1 - s}
-        for m in (EntryMatrix(res) for res in dbResults):
-            qr = m.match(matchFunction)
-            
-            for senseSet, rebkeb in qr.bySense():
-                restResult["queryRsp"].append({"sense":list(map(lambda s: s.getJson(), senseSet)), "reading":rebkeb.getJsonByReb()})
+        #Create the response
+        restResult = {"queryRsp":[], "statistics": findStats}
+        for entryMatrix in (EntryMatrix(res) for res in dbResults):
+            for senseSet, rebkeb in entryMatrix.match(queryBuilder.matchFunction).bySense():
+                restResult["queryRsp"].append({"sense":list(map(lambda s: s.getJson(), senseSet)),
+                                               "reading":rebkeb.getJsonByReb()})
 
         self.set_header("Content-Type", "application/json")
         self.finish(dumps(restResult))

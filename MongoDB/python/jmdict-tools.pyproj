@@ -32,10 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="builder\mongodb.py" />
+    <Compile Include="cache.py" />
     <Compile Include="dbaccess.py" />
     <Compile Include="entrymatrix.py" />
-    <Compile Include="jmdict.py" />
-    <Compile Include="querymatcher.py" />
+    <Compile Include="querybuilders.py" />
     <Compile Include="restful.py" />
     <Compile Include="tests\synthetic.py" />
     <Compile Include="tests\testdictionaryentries.py" />
