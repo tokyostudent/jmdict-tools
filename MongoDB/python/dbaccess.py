@@ -9,12 +9,14 @@ class JmDictMongoDb:
         self.mongoClient = MotorClient().open_sync()
         self.jmEntries = self.mongoClient[dbName][collectionName]
 
+    @property
+    def entriesCollection(self):
+        return self.jmEntries
+
     @tornado.gen.coroutine
-    def find(self, *args, limit=10, **kargs):
+    def cursorToList(self, cursor):
         s = time()
-        res = yield Op(self.jmEntries.find(*args).limit(limit).to_list)
+        res = yield Op(cursor.to_list)
         s1 = time()
 
         return (res, {"dbTime": s1 - s})
-
-

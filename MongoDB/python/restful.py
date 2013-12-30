@@ -28,10 +28,13 @@ class LookupRequestHandler(tornado.web.RequestHandler):
     @tornado.web.asynchronous
     def get(self, lookupItem):
         #Create the bestest query spec from all available REST parameters
-        queryBuilder = LookupQueryBuilder(lookupItem, self.path_kwargs)
-        
+        #This also builds the mongo cursor and applies sort(), limit(), etc...
+        queryBuilder = LookupQueryBuilder(lookupItem, self.settings["jmDictMongoDb"], self.request.arguments)
+
+        dbResults, findStats = yield queryBuilder.executeCursor()
+
         #Use the bestest query to get all the entries from the DB
-        dbResults, findStats = yield self.settings["jmDictMongoDb"].find(queryBuilder.spec, limit=queryBuilder.limit)
+        #dbResults, findStats = yield self.settings["jmDictMongoDb"].find(queryBuilder.spec, limit=queryBuilder.limit)
 
         #Create the response
         restResult = {"queryRsp":[], "statistics": findStats}
@@ -39,6 +42,12 @@ class LookupRequestHandler(tornado.web.RequestHandler):
             for senseSet, rebkeb in entryMatrix.match(queryBuilder.matchFunction).bySense():
                 restResult["queryRsp"].append({"sense":list(map(lambda s: s.getJson(), senseSet)),
                                                "reading":rebkeb.getJsonByReb()})
+
+        pagingInfo = queryBuilder.getPagingInfo(dbResults)
+        if pagingInfo:
+            restResult["page"] = pagingInfo
+
+        
 
         self.set_header("Content-Type", "application/json")
         self.finish(dumps(restResult))
