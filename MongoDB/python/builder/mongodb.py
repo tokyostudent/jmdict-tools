@@ -1,10 +1,35 @@
 from pymongo import MongoClient
 import xmltodict
+from itertools import chain
 
 
 def BuildDatabase(jmDictXml, connectionString=None):
     jmDictDatabase = MongoClient(connectionString).jmdict
     jmEntriesColl = jmDictDatabase.entries
+
+    def improveDb():
+        print("Making the DB better, really... Just wait")
+        totalEntries = jmEntriesColl.count()
+        for i, entry in zip(range(totalEntries), jmEntriesColl.find()):
+            if i % (totalEntries // 100) == 0:
+                print(".", end="", flush=True)
+
+            if i % (totalEntries // 10) == 0:
+                print("|", end="", flush=True)
+
+            if "k_ele" not in entry:
+                entry["k_ele"] = list()
+
+            if "r_ele" not in entry:
+                entry["r_ele"] = list()
+
+            kebs = (k_ele["keb"] for k_ele in entry["k_ele"])
+            rebs = (r_ele["reb"] for r_ele in entry["r_ele"])
+            glosses = (gloss.get("#text", None) for gloss in chain(*(sense.get("gloss", None) for sense in entry["sense"] if not None)) if not None)
+        
+            entry["keys"] = list(chain(kebs, rebs, glosses))
+            jmEntriesColl.save(entry)
+
 
     #http://stackoverflow.com/questions/2130016/splitting-a-list-of-arbitrary-size-into-only-roughly-n-equal-parts
     def chunkify(lst,n):
@@ -43,8 +68,15 @@ def BuildDatabase(jmDictXml, connectionString=None):
     for chunk in chunks:
         jmEntriesColl.insert(chunk)
 
-    jmEntriesColl.ensure_index("r_ele.reb")
-    jmEntriesColl.ensure_index("k_ele.keb")
+    improveDb()
+
+
+
+#    jmEntriesColl.ensure_index("r_ele.reb")
+#    jmEntriesColl.ensure_index("k_ele.keb")
+    jmEntriesColl.ensure_index("keys")
+    jmEntriesColl.ensure_index("[keys, ent_seq]")
+
 
     from bson.code import Code
 
@@ -54,3 +86,7 @@ def BuildDatabase(jmDictXml, connectionString=None):
 
 
     jmEntriesColl.map_reduce(mapper, reducer, "xrefs")
+
+    
+if __name__ == "__main__":
+    BuildDatabase("c:/temp/jmdict.xml")
