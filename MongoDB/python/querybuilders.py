@@ -24,8 +24,8 @@ class LookupQueryBuilder:
 
     @cache
     def spec(self):
-        _beginsWithSpec = {"$or": [{"k_ele.keb":{"$regex": "^{0}".format(self.query)}}, {"r_ele.reb":{"$regex": "^{0}".format(self.query)}}]}
-        _exactSpec = {"$or": [{"k_ele.keb":self.query}, {"r_ele.reb":self.query}]}
+        _beginsWithSpec = {"keys": {"$regex": "^{0}".format(self.query)}}
+        _exactSpec = {"keys": self.query}
         retSpec = _exactSpec
 
         if "beginsWith" in self.queryParams:
