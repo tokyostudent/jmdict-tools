@@ -1,0 +1,89 @@
+object Solr {
+	
+	
+	
+	def select(preparator:QueryPreparator):Future[Seq[Entry]] = {
+	
+	    val svc = (url(_defaultSolrUrl) / "select").GET
+    	preparator.prepare(svc)
+    	
+
+    	Http(svc OK as.String).map {httpResponseString => {
+
+		    val queryResponse = new solrj.response.QueryResponse
+    		queryResponse.setResponse(new XMLResponseParser().processResponse(new StringReader(httpResponseString)))
+
+    		_responseMap = responseToMap(queryResponse)
+    		
+    		_responseMap.documents.map {solrDoc =>
+        			Try(Entry(solrDoc("fullEntry").toString)).toOption
+      			}.flatten
+
+
+        	}
+	
+	
+	}
+}
+
+trait QueryInterceptor {
+	def prepareSolrReq(r:Req):Req
+	def getNextPage(lastResultLength:Int):String
+}
+
+class QueryDsl(url:String, params:Map[String, Seq[String]]) with QueryDsl {
+	def prepareSolrReq(r:Req):Req = {
+		
+	}
+	
+	def getNextPage(lastResultLength:Int):String = {
+	}
+}
+
+
+class SenseGenerator(queryDsl:QueryDsl):Seq[Json] {
+	
+
+}
+
+
+class QueryContext(url:String, params:Map[String, Seq[String]]) {
+	val queryDsl = new QueryDsl(url:String, params:Map[String, Seq[String]])
+	
+	private var _jsonEntries:Seq[Json] = Seq[Json]
+	def runQuery:Future[QueryContext] = {
+		val queryPromise = Promise[QueryContext]
+		
+		
+		val solrEntriesFuture:Future[Seq[Entry]] = Solr.select(queryDsl)
+		solrEntriesFuture.onFailure {
+			queryPromise.failed(_)
+		}
+		
+		solrEntriesFuture.onSuccess {solrEntries =>
+			val senseGenerator = new SenseGenerator(queryDsl)
+			val jsonEntries = solrEntries.map {senseGenerator.getSense}.flatten
+			val nextPage = queryDsl.getNextPage(solrEntries.size)
+			
+			
+			
+			queryPromise.complete(this)
+		}
+		
+		queryPromise
+    }
+	}
+
+	def result():Json = _result
+}
+
+
+
+def processHTTPRequest:Unit = {
+	
+	
+	QueryContext(requestUrl, requestParams).runQuery.map {context =>
+		//update response from context.result	
+	}
+	
+}
