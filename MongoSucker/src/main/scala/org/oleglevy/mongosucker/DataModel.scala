@@ -110,12 +110,16 @@ object DataModelImplicits {
 object K_ele {
   val empty:Seq[K_ele] = Seq(new K_ele("", List(), List()))
 }
+abstract class QueryMatchable {
+  def matches(query:DictionaryQuery):Boolean
+}
+
 case class K_ele(keb:String = "",
                  ke_inf:Seq[String] = Seq(),
-                 ke_pri:Seq[String] = Seq())
+                 ke_pri:Seq[String] = Seq()) extends QueryMatchable
 {
   def matches(query:DictionaryQuery):Boolean = {
-    false
+    query.matches(keb)
   }
 
   def nonEmpty: Boolean = keb.nonEmpty
@@ -127,12 +131,12 @@ case class R_ele(reb:String = "",
                  re_nokanji:Boolean = false,
                  re_restr:Seq[String] = Seq(),
                  re_inf:Seq[String] = Seq(),
-                 re_pri:Seq[String] = Seq())
+                 re_pri:Seq[String] = Seq()) extends QueryMatchable
 {
   def isReadingFor(k_ele:K_ele):Boolean = re_restr.isEmpty || re_restr.exists {_ == k_ele.keb}
   def matches(query:DictionaryQuery):Boolean =
   {
-    false
+    query.matches(reb)
   }
 }
 
@@ -148,7 +152,7 @@ case class Sense(stagk:Seq[String] = Seq(),
                  lsource:Seq[String] = Seq(),
                  dial:Seq[String] = Seq(),
                  glosses:Seq[Gloss] = Seq(),
-                 example:Seq[String] = Seq())
+                 example:Seq[String] = Seq()) extends QueryMatchable
 {
   def isSenseFor(k_ele:K_ele):Boolean             = stagk.isEmpty           ||  stagk.exists {_ == k_ele.keb}
   def isSenseFor(r_ele:R_ele):Boolean             = stagr.isEmpty           ||  stagr.exists {_ == r_ele.reb}

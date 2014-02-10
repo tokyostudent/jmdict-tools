@@ -32,7 +32,7 @@ NonJapaneseTranslation example
 Lookup english word: to become dim (returns ent_seq 1011860)
 
 In this case the translation is this (non interesting elements ommited):
-{nonJapaneseTranslation:
+{jmNonJapanese:
   [
     {senseGroup: [
                   {
@@ -43,7 +43,6 @@ In this case the translation is this (non interesting elements ommited):
     reading: [
                   {
                     ぼやける: {
-                                nokanji: false,
                                 pri: [ichi1]
                              }
                   }
@@ -88,9 +87,385 @@ looking by keb or reb, because there can be several senses that match.
     }
    ]
 }
+*/
 
+/*
+KEleTranslation example 1:
+One exactly matching keb, one reb, one sense
+Looking for "悪衣"
+{
+  "jmKeb": {
+    "1151400": {
+      "senseGroups": [
+        [
+          {
+            "pos": [
+              "n"
+            ],
+            "glosses": [
+              "shabby clothes"
+            ]
+          }
+        ]
+      ],
+      "pronunciations": [
+        {
+          "p": "あくい"
+        }
+      ],
+      "words": [
+        {
+          "senseGroupId": [
+            0
+          ],
+          "pronunciationId": [
+            0
+          ],
+          "writing": [
+            {
+              "w": "悪衣"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
 
- */
+KEleTranslation example 2: (ent_seq == 1205480)
+One exactly matching keb (out of one), TWO rebs (out of two) (no restrictions), one sense
+{
+  "jmKeb": {
+    "1205480": {
+      "senseGroups": [
+        [
+          {
+            "pos": [
+              "n",
+              "vs"
+            ],
+            "glosses": [
+              "rating",
+              "classification",
+              "allocation",
+              "grading"
+            ]
+          }
+        ]
+      ],
+      "pronunciations": [
+        {
+          "p": "かくづけ",
+          "pri": [
+            "news1",
+            "nf18"
+          ]
+        },
+        {
+          "p": "かくずけ",
+          "inf": [
+            "ik"
+          ]
+        }
+      ],
+      "words": [
+        {
+          "writing": [
+            {
+              "w": "格付け",
+              "pri": [
+                "news1",
+                "nf18"
+              ]
+            }
+          ],
+          "senseGroupId": [
+            0
+          ],
+          "pronunciationId": [
+            0,
+            1
+          ]
+        }
+      ]
+    }
+  }
+}
+
+KEleTranslation example 3: (ent_seq == 1215400)
+Two matching kebs (out of two) (they match because they both start with the same character),
+TWO rebs (out of two) (no restrictions), one sense
+
+{
+  "jmKeb": {
+    "1215400": {
+      "senseGroups": [
+        [
+          {
+            "pos": [
+              "n"
+            ],
+            "glosses": [
+              "proximity",
+              "nearness",
+              "soon",
+              "nearby"
+            ]
+          }
+        ]
+      ],
+      "pronunciations": [
+        {
+          "p": "まぢか",
+          "pri": [
+            "ichi1",
+            "news1",
+            "nf10"
+          ]
+        },
+        {
+          "p": "まじか",
+          "inf": [
+            "ik"
+          ]
+        }
+      ],
+      "words": [
+        {
+          "senseGroupId": [
+            0
+          ],
+          "pronunciationId": [
+            0,
+            1
+          ],
+          "writing": [
+            {
+              "w": "間近",
+              "pri": [
+                "ichi1",
+                "news1",
+                "nf10"
+              ]
+            },
+            {
+              "w": "真近"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+KEleTranslation example 4: (ent_seq == 1165500)
+Three matching kebs (out of three) (they match because they both start with 一日),
+two rebs (out of two) (WITH restrictions), one sense
+{
+  "jmKeb": {
+    "1165500": {
+      "senseGroups": [
+        [
+          {
+            "pos": [
+              "n",
+              "n-adv"
+            ],
+            "glosses": [
+              "all day long",
+              "all the day",
+              "throughout the day"
+            ]
+          }
+        ]
+      ],
+      "pronunciations": [
+        {
+          "p": "いちにちじゅう",
+          "pri": [
+            "ichi1"
+          ]
+        },
+        {
+          "p": "いちにちぢゅう"
+        }
+      ],
+      "words": [
+        {
+          "senseGroupId": [
+            0
+          ],
+          "pronunciationId": [
+            0,
+            1
+          ],
+          "writing": [
+            {
+              "w": "一日中",
+              "pri": [
+                "ichi1"
+              ]
+            }
+          ]
+        },
+        {
+          "senseGroupId": [
+            0
+          ],
+          "pronunciationId": [
+            1
+          ],
+          "writing": [
+            {
+              "w": "一日ぢゅう"
+            }
+          ]
+        },
+        {
+          "senseGroupId": 0,
+          "pronunciationId": [
+            0
+          ],
+          "writing": [
+            {
+              "w": "一日じゅう"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+
+KEleTranslation example 5: (ent_seq == 1002960)
+One matching keb (out of one), one reb (out of one) (no restrictions), three senses
+{
+  "jmKeb": {
+    "1002960": {
+      "senseGroups": [
+        [
+          {
+            "pos": [
+              "n"
+            ],
+            "misc": [
+              "uk"
+            ],
+            "glosses": [
+              "(one's) wife"
+            ]
+          },
+          {
+            "glosses": [
+              "(someone's) wife"
+            ]
+          },
+          {
+            "glosses": [
+              "landlady"
+            ]
+          }
+        ]
+      ],
+      "pronunciations": [
+        {
+          "p": "かみさん"
+        }
+      ],
+      "words": [
+        {
+          "senseGroupId": [
+            0
+          ],
+          "pronunciationId": [
+            0
+          ],
+          "writing": [
+            {
+              "上さん": null
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+
+KEleTranslation example 6: (ent_seq == 1283190)
+Two matching keb (two of two), one reb (out of one) (no restrictions), two senses and one of them
+is restricted to one keb
+{
+  "jmKeb": {
+    "1283190": {
+      "senseGroups": [
+        [
+          {
+            "pos": [
+              "adj-i"
+            ],
+            "glosses": [
+              "high",
+              "tall"
+            ]
+          }
+        ],
+        [
+          {
+            "glosses": [
+              "expensive"
+            ]
+          }
+        ]
+      ],
+      "pronunciations": [
+        {
+          "p": "たかい",
+          "pri": [
+            "ichi1",
+            "news1",
+            "nf08"
+          ]
+        }
+      ],
+      "words": [
+        {
+          "writing": [
+            {
+              "w": "高価い",
+              "inf": [
+                "iK"
+              ]
+            }
+          ],
+          "senseGroupId": [
+            1
+          ],
+          "pronunciationId": [
+            0
+          ]
+        },
+        {
+          "writing": [
+            {
+              "w": "高い",
+              "pri": [
+                "ichi1",
+                "news1",
+                "nf08"
+              ]
+            }
+          ],
+          "senseGroupId": [
+            0
+          ],
+          "pronunciationId": [
+            0
+          ]
+        }
+      ]
+    }
+  }
+}
+*/
 
 
 
