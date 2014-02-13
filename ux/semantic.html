@@ -1,0 +1,126 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href=".\semantic\packaged\css\semantic.css">
+
+		<style type="text/css">
+			.vertical {
+				-ms-writing-mode: tb-rl; /* old syntax. IE */
+				-webkit-writing-mode: vertical-rl;
+				-moz-writing-mode: vertical-rl;
+				-ms-writing-mode: vertical-rl;
+				writing-mode: vertical-rl; /* new syntax */
+
+				font-size: 1.2rem;
+				/*margin-left: 5rem;*/
+				height: 4rem;		
+			}
+
+			.moshe {
+				text-align: top;
+			}
+			*{
+				font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+			}
+
+			</style>
+	</head>
+
+<body>
+
+		<script src="modernizr.js" type="text/javascript"></script>
+		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script src=".\semantic\packaged\javascript\semantic.js" type="text/javascript"></script>
+
+		<div class="ui celled grid">
+			<div class="two column row">
+				<div class="column">
+					<div class="writing_container" style="">
+						<div class="kanji_writing">
+							<div class="vertical dynamic_size" style="float:left;font-size:34px">此方</div>
+						</div>
+					</div>
+
+					<div class="pronunciation_container" style="float:left">
+						<div>こちら</div>
+						<div>こっち</div>
+						<div>こち</div>
+					</div>
+				</div>
+				<div class="column">
+					<div class="ui segment">
+						<div class="ui small orange ribbon label">noun</div>
+						<div class="ui small green ribbon label">kana only</div>
+
+						<div>
+							<div class="ui black circular label">1</div>
+								this way (direction close to the speaker or towards the speaker)
+
+							<div class="ui black circular label">2</div>
+								this direction
+						</div>
+						
+
+							
+					</div>
+					<div class="ui segment">
+						<div class="ui list">
+							<div class="item">here (place close to the speaker or where the speaker is)</div>
+						</div>
+					</div>
+					<div class="ui segment">
+						<div class="ui list">
+							<div class="item">this one (something physically close to the speaker)</div>
+						</div>
+					</div>
+					<div class="ui segment">
+						<div class="ui left corner label"><div class="text">pronoun</div></div>
+						<div class="ui small green ribbon label">のnoun</div>
+						<div class="ui list">
+							<div class="item">I</div>
+							<div class="item">me</div>
+							<div class="item">we</div>
+							<div class="item">us</div>
+						</div>
+					</div>
+					<div class="ui segment">
+						<div class="ui list">
+							<div class="item">this person (someone physically close to the speaker and of equal or higher status)</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="two column row">
+				<div class="column">
+					<div id="hara" class="vertical dynamic_size" style="float:left">高い</div>
+					<div class="vertical dynamic_size" style="float:left">高価い</div>
+				</div>
+				<div class="column">
+					<div class="ui horizontal divider">noun/kana only</div>
+					
+				</div>
+			</div>
+		</div>
+
+
+<script type="text/javascript">
+	
+$().ready(function() {
+
+	$.fn.textWidth = function (text, font) {
+	    if (!$.fn.textWidth.fakeEl)
+	    	$.fn.textWidth.fakeEl = $('<span>').hide().appendTo(document.body);
+	    
+	    $.fn.textWidth.fakeEl.text(text || this.val() || this.text()).css('font', font || this.css('font'));
+	    return $.fn.textWidth.fakeEl.width();
+	};
+
+	$(".dynamic_size").css("height", function() {
+		return $(this).textWidth()}
+		);
+
+	});
+
+</script>
+
+</html>
