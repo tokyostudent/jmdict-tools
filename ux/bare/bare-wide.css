@@ -1,0 +1,53 @@
+body {
+	padding-left: 20px;
+	padding-top: 20px;
+}
+
+.wordTranslation {
+	overflow: hidden;
+}
+.wordTranslation > .wordSection {
+	float: left;
+	margin:0;
+	margin-right: 3em;
+}
+
+.wordTranslation > .readingSection {
+	float: left;
+	margin:0;
+	margin-right: 3em;
+	
+	border-left: dashed;
+	border-left-width: 1px;
+
+}
+
+.wordTranslation > .translationSection {
+	float: left;
+
+	margin-right: 3em;
+	
+	border-left: dashed;
+	border-left-width: 1px;
+}
+
+.kanji {
+	margin: 0;
+	font-size: 1.5em;
+}
+
+.prononciation {
+	margin: 0.1em;
+}
+
+.のnoun {
+
+}
+
+.sense {
+	margin-bottom: 18px;
+}
+.sense > ul {
+	margin: 0px;
+	list-style-type: none
+}
