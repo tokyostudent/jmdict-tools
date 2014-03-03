@@ -1,39 +1,67 @@
 body {
-	padding-left: 20px;
-	padding-top: 20px;
+	width:950px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 .wordTranslation {
+	background-color: darkgray;
+	color: white;
+	
+	background: #8989ba; /* Old browsers */
+	background: -moz-linear-gradient(45deg,  #8989ba 0%, #8989ba 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#8989ba), color-stop(100%,#8989ba)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(45deg,  #8989ba 0%,#8989ba 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(45deg,  #8989ba 0%,#8989ba 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(45deg,  #8989ba 0%,#8989ba 100%); /* IE10+ */
+	background: linear-gradient(45deg,  #8989ba 0%,#8989ba 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8989ba', endColorstr='#8989ba',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+
 	overflow: hidden;
+	padding-bottom: 4px;
+	padding-top: 4px;
+	margin-bottom: 4px;
+	width:100%;
+	display: block;
+	box-shadow: 2px 2px 4px gray;
 }
+
 .wordTranslation > .wordSection {
-	float: left;
 	margin:0;
 	margin-right: 3em;
+	width: 25%;
+	display:table-cell;
 }
 
 .wordTranslation > .readingSection {
-	float: left;
 	margin:0;
-	margin-right: 3em;
+	
 	
 	border-left: dashed;
 	border-left-width: 1px;
+
+	width: 20%;
+	display:table-cell;
 
 }
 
 .wordTranslation > .translationSection {
-	float: left;
 
-	margin-right: 3em;
+	padding-left: 4px;
+	margin-left: 32px;
 	
 	border-left: dashed;
 	border-left-width: 1px;
+	display:table-cell;
+
 }
 
 .kanji {
 	margin: 0;
-	font-size: 1.5em;
+	font-size: 2em;
+	word-break: break-all;
+	width:204px;
 }
 
 .prononciation {
@@ -44,10 +72,66 @@ body {
 
 }
 
+ul, li {
+	padding: 0px;
+	margin: 0px;
+}
 .sense {
-	margin-bottom: 18px;
+	border-bottom: solid;
+	border-bottom-width: 0.1em;
+}
+
+.translationSection > .sense:not(:first-child) {
+	margin-top: 0.4em;
 }
 .sense > ul {
 	margin: 0px;
 	list-style-type: none
 }
+
+.glossList {
+	clear: both;
+	padding: 0px;
+}
+
+.senseInfo > li {
+	float: left;
+	margin-right: 4px;
+	margin-bottom: 4px;
+	padding: 1px;
+	padding-left: 2px;
+	padding-right: 2px;
+	font-size: 0.75em;
+}
+
+.senseInfo > .pos {
+	background-color: red;
+	color: white;
+}
+
+.senseInfo > .inf {
+	background-color: green;
+	color: white;
+}
+
+.topMenu {
+	height: 4em;
+	background-color: red;
+	margin-bottom: 1em;
+	position: fixed;
+	width: 100%;
+	left: 0;
+	top: 0;
+}
+
+.topMenu + .translations {
+	margin-top: 4.1em;
+}
+
+.searchBox {
+	width: 950px;
+	margin-left: 40px;
+	border: 0;
+	padding: 0;
+}
+
