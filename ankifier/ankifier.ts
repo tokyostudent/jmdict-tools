@@ -23,8 +23,6 @@ if (0 == japText.length)
 
 var neededTranslations = japText.match(/^[a-zA-Z].*$/mg);
 
-
-
 class PatternExecutor {
 	constructor(private pattern:RegExp, private executor: (r:RegExp, text:string, counter: (translation:string) => void) => void) {
 		
@@ -46,7 +44,7 @@ class PatternExecutor {
 
 function replace234Lines(r:RegExp, text:string, counter: (translation:string) => void):void {
 	text.replace(r, (wholeMatch, kanji, reading, meaning):string => {
-		console.log("Kanji: " + kanji + ", Reading: " + reading + ", Meaning: " + meaning);
+        console.log(kanji.trim() + "\t" + reading.trim() + "\t" + meaning.trim());
 		counter(meaning);
 
 		return "";
@@ -54,9 +52,9 @@ function replace234Lines(r:RegExp, text:string, counter: (translation:string) =>
 }
 
 var executors:Array<PatternExecutor> = [
-	new PatternExecutor(/^$\n([^a-zA-Z\（\）]*)$\n([a-zA-Z].*)$/gm, (r, text, counter: (translation:string) => void) => {
+    new PatternExecutor(/^$[\n\r]([^a-zA-Z\（\）]*)$[\n\r]([a-zA-Z].*)$/gm, (r, text, counter: (translation:string) => void) => {
 			text.replace(r, (wholeMatch, reading, meaning):string => {
-				console.log("Reading: " + reading + ", Meaning: " + meaning);
+                console.log(reading.trim() + "\t", reading.trim() + "\t" + meaning.trim());
 				counter(meaning);
 
 				return "";
@@ -64,9 +62,9 @@ var executors:Array<PatternExecutor> = [
 				});
 		}),
 
-	new PatternExecutor(/^$\n([^a-zA-Z]*)\（(.*)\）$\n([a-zA-Z].*)$/gm, replace234Lines),
-	new PatternExecutor(/^$\n([^a-zA-Z]*)\（(.*)\）$\n^.*$\n([a-zA-Z].*)$/gm, replace234Lines),
-	new PatternExecutor(/^$\n([^a-zA-Z]*)\（(.*)\）$\n^.*$\n^.*$\n([a-zA-Z].*)$/gm, replace234Lines)
+    new PatternExecutor(/^$[\n\r]([^a-zA-Z]*)\（(.*)\）$[\n\r]([a-zA-Z].*)$/gm, replace234Lines),
+    new PatternExecutor(/^$[\n\r]([^a-zA-Z]*)\（(.*)\）$[\n\r]^.*$[\n\r]([a-zA-Z].*)$/gm, replace234Lines),
+    new PatternExecutor(/^$[\n\r]([^a-zA-Z]*)\（(.*)\）$[\n\r]^.*$[\n\r]^.*$[\n\r]([a-zA-Z].*)$/gm, replace234Lines)
 ];
 
 
@@ -85,6 +83,5 @@ if (0 != neededTranslations.length)
 }
 
 
-
-
-console.log("DO NOT FORGET TO ADD AN EMPTY LINE IN THE BEGINNING OF THE FILE")
+console.log("DO NOT FORGET TO ADD AN EMPTY LINE IN THE BEGINNING OF THE FILE");
+console.log("ALSO SAVE THE WORDS FILE IN MAC FORMAT (will get to the conversion later)");

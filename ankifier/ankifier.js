@@ -38,7 +38,7 @@ var PatternExecutor = (function () {
 
 function replace234Lines(r, text, counter) {
     text.replace(r, function (wholeMatch, kanji, reading, meaning) {
-        console.log("Kanji: " + kanji + ", Reading: " + reading + ", Meaning: " + meaning);
+        console.log(kanji.trim() + "\t" + reading.trim() + "\t" + meaning.trim());
         counter(meaning);
 
         return "";
@@ -46,17 +46,17 @@ function replace234Lines(r, text, counter) {
 }
 
 var executors = [
-    new PatternExecutor(/^$\n([^a-zA-Z\（\）]*)$\n([a-zA-Z].*)$/gm, function (r, text, counter) {
+    new PatternExecutor(/^$[\n\r]([^a-zA-Z\（\）]*)$[\n\r]([a-zA-Z].*)$/gm, function (r, text, counter) {
         text.replace(r, function (wholeMatch, reading, meaning) {
-            console.log("Reading: " + reading + ", Meaning: " + meaning);
+            console.log(reading.trim() + "\t", reading.trim() + "\t" + meaning.trim());
             counter(meaning);
 
             return "";
         });
     }),
-    new PatternExecutor(/^$\n([^a-zA-Z]*)\（(.*)\）$\n([a-zA-Z].*)$/gm, replace234Lines),
-    new PatternExecutor(/^$\n([^a-zA-Z]*)\（(.*)\）$\n^.*$\n([a-zA-Z].*)$/gm, replace234Lines),
-    new PatternExecutor(/^$\n([^a-zA-Z]*)\（(.*)\）$\n^.*$\n^.*$\n([a-zA-Z].*)$/gm, replace234Lines)
+    new PatternExecutor(/^$[\n\r]([^a-zA-Z]*)\（(.*)\）$[\n\r]([a-zA-Z].*)$/gm, replace234Lines),
+    new PatternExecutor(/^$[\n\r]([^a-zA-Z]*)\（(.*)\）$[\n\r]^.*$[\n\r]([a-zA-Z].*)$/gm, replace234Lines),
+    new PatternExecutor(/^$[\n\r]([^a-zA-Z]*)\（(.*)\）$[\n\r]^.*$[\n\r]^.*$[\n\r]([a-zA-Z].*)$/gm, replace234Lines)
 ];
 
 var totalExecutions = 0;
@@ -72,3 +72,4 @@ if (0 != neededTranslations.length) {
 }
 
 console.log("DO NOT FORGET TO ADD AN EMPTY LINE IN THE BEGINNING OF THE FILE");
+console.log("ALSO SAVE THE WORDS FILE IN MAC FORMAT (will get to the conversion later)");
