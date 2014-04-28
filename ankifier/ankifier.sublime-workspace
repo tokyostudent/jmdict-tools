@@ -1,0 +1,345 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"to",
+				"[pub] ○ toString (radix?: number): string"
+			],
+			[
+				"word",
+				"break-word"
+			],
+			[
+				"ali",
+				"vertical-align"
+			],
+			[
+				"mar",
+				"margin-right"
+			],
+			[
+				"margin",
+				"margin-left"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"ta",
+				"table-cell"
+			],
+			[
+				"bord",
+				"border-bottom"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"pad",
+				"padding-left"
+			],
+			[
+				"padding",
+				"padding"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"d",
+				"dashed"
+			],
+			[
+				"bo",
+				"border"
+			],
+			[
+				"bor",
+				"border-bottom"
+			],
+			[
+				"td",
+				"thead	Tag"
+			],
+			[
+				"h",
+				"href"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 208.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: instal",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: re",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control:",
+				"Package Control: Install Package"
+			],
+			[
+				"jsbin: ",
+				"jsbin: Create Project"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 188.0,
+		"history":
+		[
+			"sys.version",
+			"dir(sys)",
+			"import sys",
+			"view.run_command(\"example\")",
+			"view.run_command(\"exampLE\")",
+			"view.run_command(\"example\")",
+			"\"sdlflsjkf\".contains(\"\")",
+			"r.contains(3)",
+			"dir(view)",
+			"r",
+			"r = 4*3234"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/oleglevy/dev/tokyostudent/jmdict-tools/ankifier/ankifier.sublime-project",
+		"/Users/oleglevy/Library/Application Support/Sublime Text 3/Packages/User/jsbin.py",
+		"/Users/oleglevy/Library/Application Support/Sublime Text 3/Packages/jsbin/Main.sublime-menu",
+		"/Users/oleglevy/Library/Application Support/Sublime Text 3/Packages/jsbin/Default.sublime-commands",
+		"/private/tmp/pk/Default.sublime-commands",
+		"/private/tmp/pk/package_control/commands/add_channel_command.py",
+		"/private/tmp/asd",
+		"/tmp/pk/Main.sublime-menu",
+		"/private/tmp/pk/Main.sublime-menu",
+		"/tmp/pk/package_control/commands/add_repository_command.py",
+		"/private/tmp/origami/origami.py",
+		"/Users/oleglevy/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/oleglevy/Library/Application Support/Sublime Text 3/Packages/T3S/Typescript.py",
+		"/Users/oleglevy/Library/Application Support/Sublime Text 3/Packages/User/Distraction Free.sublime-settings",
+		"/Users/oleglevy/Library/Application Support/Sublime Text 3/Packages/User/JSON.sublime-settings",
+		"/Users/oleglevy/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/oleglevy/Library/Application Support/Sublime Text 3/Packages/T3S/Typescript.sublime-settings",
+		"/Users/oleglevy/ss72/etc/asterisk/extensions.conf",
+		"/Users/oleglevy/ss72_1/etc/asterisk/get-cic.py",
+		"/Users/oleglevy/ss72_1/etc/asterisk/extensions.conf",
+		"/Users/oleglevy/ss72/etc/asterisk/get-cic.py",
+		"/Users/oleglevy/dev/a2billing/AGI/a2billing.php",
+		"/Users/oleglevy/dev/a2billing/admin/Public/form_data/FG_var_user.inc",
+		"/Users/oleglevy/dev/a2billing/webservice/lib/Class.A2Billing.php",
+		"/Users/oleglevy/Downloads/freeswitch-release-1-0.noarch.rpm",
+		"/Users/oleglevy/dev/tokyostudent/jmdict-tools/ux/bare/bare.js",
+		"/Users/oleglevy/dev/tokyostudent/jmdict-tools/ux/bare/jquery.livequery.min.js",
+		"/Users/oleglevy/dev/tokyostudent/jmdict-tools/ux/bare/bare,js",
+		"/Users/oleglevy/dev/tokyostudent/jmdict-tools/ux/bare/normalize.css"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/tmp/pk",
+			"/tmp/pc",
+			"/tmp/Origami",
+			"/Users/oleglevy/dev/a2billing"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"AddRepositoryCommand",
+			"add_repository",
+			"command_palette",
+			"commandpalette",
+			"command_palette",
+			"show_overlay",
+			"ShowOverlay",
+			"ShowOverlayCommand",
+			"create_pane",
+			"CreatePaneWithClonedFileCommand",
+			"create_pane",
+			"DestroyPaneCommand",
+			"destroy_pane",
+			"log",
+			"136223488",
+			"iam_cit",
+			"process_iam",
+			"nonbuiltin_setvar_helper",
+			"ttc_isup_cit",
+			"decode_ttc_cit",
+			"TTC_CARRIER_INFORMATON_TRANSFER",
+			"decode_ttc_cit",
+			"iam",
+			"decode_",
+			"iam",
+			"process_iam",
+			"$config",
+			"auto_setcallerid",
+			"callingcard_auto_setcallerid",
+			"callingcard_acct_start_inuse",
+			"stop",
+			"_inuse(",
+			"set_in",
+			"class A2Billing",
+			"$A2B =",
+			"callingcard_acct_start_inuse",
+			"a2billing.php",
+			"agi",
+			",",
+			"spa-shell-head-logo",
+			"block",
+			"border",
+			"border-",
+			"border-bo",
+			")</",
+			">\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			" "
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "ankifier.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				"~/dev/tokyostudent/jmdict-tools/ux/bare/normalize.css"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
