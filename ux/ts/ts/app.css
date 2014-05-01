@@ -1,0 +1,21 @@
+﻿body {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+span {
+    font-style: italic;
+}
+
+.suggestBox {
+    width:100%;
+    font-size:2em;
+}
+
+.resultsOutputPane .english {
+}
+
+.resultsOutputPane .kanji {
+}
+
+.resultsOutputPane .kana {
+}
