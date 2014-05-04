@@ -21,7 +21,7 @@ if (0 == japText.length)
 }
 
 
-var neededTranslations = japText.match(/^[a-zA-Z].*$/mg);
+var neededTranslations = japText.match(/^[\d\(\)a-zA-Z].*$/mg);
 
 class PatternExecutor {
 	constructor(private pattern:RegExp, private executor: (r:RegExp, text:string, counter: (translation:string) => void) => void) {
@@ -52,7 +52,7 @@ function replace234Lines(r:RegExp, text:string, counter: (translation:string) =>
 }
 
 var executors:Array<PatternExecutor> = [
-    new PatternExecutor(/^$[\n\r]([^a-zA-Z\（\）]*)$[\n\r]([a-zA-Z].*)$/gm, (r, text, counter: (translation:string) => void) => {
+    new PatternExecutor(/^$[\n\r]([^a-zA-Z\（\）]*)$[\n\r]([\d\(\)a-zA-Z].*)$/gm, (r, text, counter: (translation:string) => void) => {
 			text.replace(r, (wholeMatch, reading, meaning):string => {
                 console.log(reading.trim() + "\t", reading.trim() + "\t" + meaning.trim());
 				counter(meaning);
@@ -62,9 +62,9 @@ var executors:Array<PatternExecutor> = [
 				});
 		}),
 
-    new PatternExecutor(/^$[\n\r]([^a-zA-Z]*)\（(.*)\）$[\n\r]([a-zA-Z].*)$/gm, replace234Lines),
-    new PatternExecutor(/^$[\n\r]([^a-zA-Z]*)\（(.*)\）$[\n\r]^.*$[\n\r]([a-zA-Z].*)$/gm, replace234Lines),
-    new PatternExecutor(/^$[\n\r]([^a-zA-Z]*)\（(.*)\）$[\n\r]^.*$[\n\r]^.*$[\n\r]([a-zA-Z].*)$/gm, replace234Lines)
+    new PatternExecutor(/^$[\n\r]([^a-zA-Z]*)\（(.*)\）$[\n\r]([\d\(\)a-zA-Z].*)$/gm, replace234Lines),
+    new PatternExecutor(/^$[\n\r]([^a-zA-Z]*)\（(.*)\）$[\n\r]^.*$[\n\r]([\d\(\)a-zA-Z].*)$/gm, replace234Lines),
+    new PatternExecutor(/^$[\n\r]([^a-zA-Z]*)\（(.*)\）$[\n\r]^.*$[\n\r]^.*$[\n\r]([\d\(\)a-zA-Z].*)$/gm, replace234Lines)
 ];
 
 

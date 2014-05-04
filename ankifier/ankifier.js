@@ -14,7 +14,7 @@ if (0 == japText.length) {
     process.exit();
 }
 
-var neededTranslations = japText.match(/^[a-zA-Z].*$/mg);
+var neededTranslations = japText.match(/^[\(\)a-zA-Z].*$/mg);
 
 var PatternExecutor = (function () {
     function PatternExecutor(pattern, executor) {
@@ -46,7 +46,7 @@ function replace234Lines(r, text, counter) {
 }
 
 var executors = [
-    new PatternExecutor(/^$[\n\r]([^a-zA-Z\（\）]*)$[\n\r]([a-zA-Z].*)$/gm, function (r, text, counter) {
+    new PatternExecutor(/^$[\n\r]([^a-zA-Z\（\）]*)$[\n\r]([\d\(\)a-zA-Z].*)$/gm, function (r, text, counter) {
         text.replace(r, function (wholeMatch, reading, meaning) {
             console.log(reading.trim() + "\t", reading.trim() + "\t" + meaning.trim());
             counter(meaning);
@@ -54,9 +54,9 @@ var executors = [
             return "";
         });
     }),
-    new PatternExecutor(/^$[\n\r]([^a-zA-Z]*)\（(.*)\）$[\n\r]([a-zA-Z].*)$/gm, replace234Lines),
-    new PatternExecutor(/^$[\n\r]([^a-zA-Z]*)\（(.*)\）$[\n\r]^.*$[\n\r]([a-zA-Z].*)$/gm, replace234Lines),
-    new PatternExecutor(/^$[\n\r]([^a-zA-Z]*)\（(.*)\）$[\n\r]^.*$[\n\r]^.*$[\n\r]([a-zA-Z].*)$/gm, replace234Lines)
+    new PatternExecutor(/^$[\n\r]([^a-zA-Z]*)\（(.*)\）$[\n\r]([\d\(\)a-zA-Z].*)$/gm, replace234Lines),
+    new PatternExecutor(/^$[\n\r]([^a-zA-Z]*)\（(.*)\）$[\n\r]^.*$[\n\r]([\d\(\)a-zA-Z].*)$/gm, replace234Lines),
+    new PatternExecutor(/^$[\n\r]([^a-zA-Z]*)\（(.*)\）$[\n\r]^.*$[\n\r]^.*$[\n\r]([\d\(\)a-zA-Z].*)$/gm, replace234Lines)
 ];
 
 var totalExecutions = 0;
